@@ -9,11 +9,129 @@
 --dark-grayish-red: hsl(0, 6%, 24%);
 
 /* Gradients */
---lighter-grdient: Linear, 135deg, from hsl(0, 0%, 100%), to hsl(0, 100%, 98%);
---darker-gradient: Linear, 135deg, from hsl(0, 80%, 86%), to hsl(0, 74%, 74%);
+--lighter-gradient: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+--darker-gradient: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
 }
 
 body {
+    background-image: var(--lighter-gradient);
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1rem;
+    font-weight: 400;
+    color: var(--desaturated-red);
 }
+
+.page {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    grid-template-areas: 
+    "page__logo"
+    "page__image"
+    "page__info";
+    align-items: start;
+    overflow: hidden;
+    /* height: 100vh;
+    width: 100vw; */
+}
+
+.page__logo {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    width: 100%;
+    padding: 2rem;
+    grid-area: page__logo;
+}
+
+.page__logo-img {
+    width: 32%;
+}
+
+.page__image {
+    width: 100%;
+    grid-area: page__image;
+}
+
+.page__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    grid-area: page__info;
+    width: 100%;
+}
+
+.page__info-title {
+    font-size: 2.5rem;
+    letter-spacing: 0.75rem;
+    line-height: 2.75rem;
+    text-transform: uppercase;
+    padding-top: 1rem;
+    width: 10ch;
+    text-align: center;
+}
+
+.page__info-title--light {
+    font-weight: 300;
+}
+
+.page__info-title--dark {
+    color: var(--dark-grayish-red);
+    font-weight: 600;
+}
+
+.page__info-text {
+    font-size: 0.9rem;
+    width: 35ch;
+    padding-block: 1rem 2rem;
+}
+
+.page__info-email {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.page__info-email-input {
+    border-radius: 2.5rem;
+    padding: 0.75rem 3.5rem 0.75rem 1.75rem;
+    width: 311px;
+    height: 48px;
+    border: 1px solid var(--desaturated-red);
+    opacity: 50%;
+    outline: none;
+}
+
+.page__info-email-input::placeholder {
+    color: var(--desaturated-red);
+    font-size: 0.85rem;
+}
+
+.page__info-email-button {
+    align-content: flex-end;
+    background-image: var(--darker-gradient);
+    border-radius: 2rem;
+    border: none;
+    position: absolute;
+    box-shadow: 5px 5px 15px 5px rgb(223 30 30 / 24%);
+    top: 0;
+    left: 16rem;
+    width: 4rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+/* To-do:
+    - Add "icon-arrow.svg" to button
+    - Add hover state to button
+    - Style input error and error message
+    - Media query for desktop layout
+    - JavaScript for input
+        - Error messages
+            - Empty `input` field
+            - Email not formatted correctly */
