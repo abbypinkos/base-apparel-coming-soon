@@ -11,6 +11,7 @@
 /* Gradients */
 --lighter-gradient: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
 --darker-gradient: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+--hover-gradient: linear-gradient(90deg, 	hsl(2, 85%, 92%), hsl(0, 80%, 88%));
 }
 
 body {
@@ -31,8 +32,6 @@ body {
     "page__info";
     align-items: start;
     overflow: hidden;
-    /* height: 100vh;
-    width: 100vw; */
 }
 
 .page__logo {
@@ -53,6 +52,10 @@ body {
     grid-area: page__image;
 }
 
+.page__image-desktop {
+    display: none;
+}
+
 .page__info {
     display: flex;
     flex-direction: column;
@@ -65,9 +68,9 @@ body {
 }
 
 .page__info-title {
-    font-size: 2.5rem;
+    font-size: 2.45rem;
     letter-spacing: 0.75rem;
-    line-height: 2.75rem;
+    line-height: 2.65rem;
     text-transform: uppercase;
     padding-top: 1rem;
     width: 10ch;
@@ -84,9 +87,10 @@ body {
 }
 
 .page__info-text {
-    font-size: 0.9rem;
+    font-size: 0.895rem;
     width: 35ch;
-    padding-block: 1rem 2rem;
+    padding-block: 0.95rem 2rem;
+    line-height: 1.4rem;
 }
 
 .page__info-email {
@@ -99,9 +103,9 @@ body {
 
 .page__info-email-input {
     border-radius: 2.5rem;
-    padding: 0.75rem 3.5rem 0.75rem 1.75rem;
-    width: 311px;
-    height: 48px;
+    padding: 0.75rem 3.5rem 0.75rem 1.5rem;
+    width: 19.5rem;
+    height: 3rem;
     border: 1px solid var(--desaturated-red);
     opacity: 50%;
     outline: none;
@@ -114,24 +118,113 @@ body {
 
 .page__info-email-button {
     align-content: flex-end;
-    background-image: var(--darker-gradient);
+    background: url(../images/icon-arrow.svg) center center no-repeat,
+    var(--darker-gradient);
     border-radius: 2rem;
     border: none;
     position: absolute;
-    box-shadow: 5px 5px 15px 5px rgb(223 30 30 / 24%);
+    box-shadow: 5px 5px 15px 5px rgb(223 30 30 / 16%);
     top: 0;
-    left: 16rem;
+    left: 15.5rem;
     width: 4rem;
     height: 3rem;
     cursor: pointer;
 }
 
+@media only screen and (min-width: 1224px) {
+    .page {
+        height: 100vh;
+        justify-content: space-between;
+        grid-template-areas:
+        "page__logo page__logo  page__image"
+        "page__info page__info  page__image"
+        "page__info page__info  page__image";
+        text-align: left;
+    }
+
+    .page__info,
+    .page__logo {
+        margin-left: 20.5em;
+        padding: 0;
+    }
+
+    .page__logo {
+        padding-top: 4rem;
+    }
+
+    .page__logo-img {
+        width: auto;
+    }
+
+    .page__info,
+    .page__info-title {
+        text-align: left;
+    }
+
+    .page__info {
+        align-items: flex-start;
+    }
+
+    .page__info-title {
+        padding-top: 2.75rem;
+        font-size: 4rem;
+        line-height: 4.25rem;
+        letter-spacing: 1.15rem;
+    }
+
+    .page__info-text {
+        font-size: 1rem;
+        line-height: 1.75rem;
+        width: 45ch;
+        padding-block: 1.5rem 2.5rem;
+    }
+
+    .page__info-email-input {
+        padding: 0.75rem 3.5rem 0.75rem 1.5rem;
+        width: 27.75rem;
+        height: 3.5rem;
+    }
+
+    .page__info-email-button {
+        left: 21.5rem;
+        top: -0.125rem;
+        height: 3.75rem;
+        width: 6.5rem;
+    }
+
+    .page__info-email-button:hover {
+        background: url(../images/icon-arrow.svg) center center no-repeat,
+        var(--hover-gradient);
+    }
+
+    .page__info-email-input::placeholder {
+        font-size: inherit;
+        padding-left: 0.45rem;
+    }
+
+    .page__image {
+        display: none;
+    }
+
+    .page__image-desktop {
+        display: block;
+        grid-area: page__image;
+        height: 100vh;
+        width: max-content;
+    }
+
+    .page__info-email--error {
+        border: 2px solid rgb(224, 112, 110);
+        border-radius: 2.5rem;
+        background: no-repeat url(../images/icon-error.svg);
+        background-position: center right 7rem;
+    }
+}
+
 /* To-do:
-    - Add "icon-arrow.svg" to button
-    - Add hover state to button
     - Style input error and error message
-    - Media query for desktop layout
     - JavaScript for input
         - Error messages
             - Empty `input` field
-            - Email not formatted correctly */
+            - Email not formatted correctly
+    - Background image for desktop layout */
